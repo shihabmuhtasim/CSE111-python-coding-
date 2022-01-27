@@ -1,0 +1,61 @@
+Question-2
+Design the required class(es) so that the following expected output is generated. Do not change any given code.\ Your code should work for any number of arguments in \_\_init_\_ and setToppings method of pizza class. For simplicity,\ you can consider there will be only 3 categories of pizzas and they are: Chicken, Beef, Cheese.
+
+Output:\ Domino’s. The Pizza Delivery Experts.\ 1.======================================\ 2.======================================\ A pizza without toppings cannot be created.\ 3.======================================\ Toppings added to Beef Kala Bhuna pizza.\ 4.======================================\ 5.======================================\ Total number of pizzas: 5\ Chicken Pizza:2\ Name:Spicy Chicken, Toppings: ['Spicy Chicken', 'Onion', 'Capsicum']\ Name:Chicken Dominator, Toppings: ['Barbecue Chicken,Spicy Chicken,Grilled Chicken']
+
+Beef Pizza:2\ Name:Beef Kala Bhuna, Toppings: ['Curried Beef', 'Capsicum', 'Paprika', 'Onion']\ Name:Beefzza, Toppings: ['Minced Beef', 'Beef Pepperoni', 'Onion', 'Jalapeno']
+
+Cheese Pizza: 1\ Name:Margherita, Toppings: ['Mozzarella Cheese']\ 6.======================================
+
+# Write you code here
+
+class Dominos:
+    def __init__(self,dom_name):
+        print('Domino’s. The Pizza Delivery Experts.')
+        self.dic={}
+    def addPizza(self,*info):
+        for obj in info:
+            self.dic[obj.name]=obj.li
+           
+    def showMenu(self):
+        chicken=0
+        beef=0
+        cheese=0
+        for key,val in self.dic.items():
+            if 'Chicken' in key:
+                chicken+=1
+                
+        
+class Pizza:
+    def __init__(self,*args):
+        self.li=[]
+        self.name=args[0]
+        if len(args)>1:
+            self.li=args[1:]
+    def setToppings(self,*args):
+        for i in args:
+            self.li.append(i)
+        
+            
+        
+
+
+#======================================================================
+#Do not change the codes below
+dom = Dominos("Domino's Pizza")
+print("1.=================================")
+p1 = Pizza("Spicy Chicken","Spicy Chicken","Onion","Capsicum")
+dom.addPizza(p1)
+p2 = Pizza("Margherita","Mozzarella Cheese")
+print("2.=================================")
+p3 = Pizza("Beef Kala Bhuna")
+print("3.=================================")
+p3.setToppings("Curried Beef","Capsicum","Paprika","Onion")
+print("4.=================================")
+dom.addPizza(p2,p3)
+p4 = Pizza("Chicken Dominator","Barbecue Chicken,Spicy Chicken,Grilled Chicken")
+p5 = Pizza("Beefzza","Minced Beef","Beef Pepperoni","Onion","Jalapeno")
+dom.addPizza(p4,p5)
+print("5.=================================")
+dom.showMenu()
+print("6.=================================")
